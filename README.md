@@ -21,7 +21,7 @@ url-shortener-app/
 │   └── index.js
 └── package.json
 ```
-3. 🔁 Routing Configuration
+### 3.  Routing Configuration
 App.js sets up React Router with two routes:
 
 / → Homepage with URL shortener form
