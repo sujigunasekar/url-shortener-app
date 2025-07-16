@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+##  Steps Involved in This Project
+### 1.  Project Setup
+Created the React project using create-react-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Installed dependencies: @mui/material, @emotion/react, @emotion/styled, react-router-dom
 
-## Available Scripts
+Configured .env file to force app to run on localhost:3000
 
-In the project directory, you can run:
+### 2.  Folder Structure Setup
 
-### `npm start`
+url-shortener-app/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── LoggerMiddleware.js
+│   │   └── UrlShortenerForm.js
+│   ├── pages/
+│   │   ├── HomePage.jsx
+│   │   └── StatsPage.jsx
+│   ├── App.js
+│   └── index.js
+└── package.json
+3. 🔁 Routing Configuration
+App.js sets up React Router with two routes:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+/ → Homepage with URL shortener form
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+/stats → (Placeholder for future stats page)
 
-### `npm test`
+### 4.  Core Component: UrlShortenerForm.js
+Started with a single entry and allowed up to 5 concurrent entries
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+State contains originalURL, duration, customAlias, and output
 
-### `npm run build`
+Input handlers update state dynamically
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Submit handler:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Validates non-empty URL
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Generates a shortcode (or uses custom if provided)
 
-### `npm run eject`
+Simulates short URL and logs using LoggerMiddleware
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Results displayed below each form entry
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5.  Logger Middleware
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const logger = (msg) => console.log(`[${new Date().toISOString()}] ${msg}`);
+export default logger;
+Logs user actions with timestamps
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Used in every shortcode generation
 
-## Learn More
+### 6.  Extending Entries
+Add button lets user add up to 5 URL forms
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Includes validation to prevent exceeding the limit
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 7.  App Launch Workflow
+Clone repo & navigate to project directory
 
-### Code Splitting
+Run npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Set port to 3000 using:
 
-### Analyzing the Bundle Size
+PowerShell: $env:PORT=3000; npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+CMD: set PORT=3000 && npm start
 
-### Making a Progressive Web App
+App will open on http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
