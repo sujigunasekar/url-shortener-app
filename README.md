@@ -7,7 +7,7 @@ Installed dependencies: @mui/material, @emotion/react, @emotion/styled, react-ro
 Configured .env file to force app to run on localhost:3000
 
 ### 2.  Folder Structure Setup
-
+```
 url-shortener-app/
 ├── public/
 ├── src/
@@ -20,6 +20,7 @@ url-shortener-app/
 │   ├── App.js
 │   └── index.js
 └── package.json
+```
 3. 🔁 Routing Configuration
 App.js sets up React Router with two routes:
 
